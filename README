@@ -1,0 +1,93 @@
+/*********************************************************
+ * Project 2: grep
+ * Comp 15 Fall 2018 
+ * 
+ * Author: Matias Korman & Peter Horvath
+ *
+ *********************************************************/
+ _____
+/Files\
+-------
+
+main.cpp		: the program itself
+Database.cpp	: implementation of the Database class
+Database.h		: interfase of the Database class (used to read in a file
+				  system and search its contents)
+Entry.h			: implementation of the Entry struct (used to store a word,
+				  its filename, its line number, and its line)
+LinkedList.cpp  : implementation of the LinkedList class (from HW5)
+LinkedList.h	: interface of the LinkedList class (was used for separate
+				  chaining in the hash table within Database)
+FSTree.h		: interface of FSTree class  (used to explore file directories)
+FSTree.o		: compiled version of FSTree.cpp
+DirNode.h 		: interface of DirNode class (nodes used in FSTree)
+DirNode.o 		: compiled version of DirNode.cpp
+README 			: this file
+
+ _______
+/Phase I\
+---------
+This phase went very smoothly. As far as I can tell, the programs each work as
+intended. I tested each by using commands very similar to the ones on the spec.
+
+/FSTreeTraversal.cpp/
+This program takes a directory as a command line argument and creates an FSTree
+of its contents. It then prints all the contents to cout with a recursive
+function.
+
+/StringProcessing.cpp/
+This program runs a loop asking for user input from cin. It removes any non-
+alphanumeric characters from the given string and returns the result. It does this
+with a very simple for loop.
+
+ ________
+/Phase II\
+----------
+PURPOSE:
+The purpose of gerp is index a given directory's files so a user may search
+all files in that directory for a given word. The commands @i or @insensitive
+may be used for a case-insensitive search.
+
+ACKNOWLEDGEMENTS:
+I discussed the general structure of the project with Harry Steinberg and Josh
+Schellinger. I consulted Piazza frequently. Whenever I wanted more information
+on a function or type in the C++ standard library, I went to cplusplus.com
+or en.cppreference.com. For a refresher on several topics regarding classes, I
+consulted learncpp.com.
+
+DATA STRUCTURES:
+The main data structure was the hash table, a dynamically allocated array of
+LinkedLists of Entries within the Database class. I implemented a basic
+separately-chaining hash table.
+
+Also within the Database class were two arrays, one 1D and the other 2D. The
+1D array contained every filename of the files read into the Database and the
+2D array contained every line from those files, indexed by filename and line
+number. These were used so I wouldn't have to store duplicate data in the hash
+table within each Entry. It saved space.
+
+Finally, the Entry struct was a way to package a word together with its 
+originally-cased version, hash number, line number, and index for the filename
+array.
+
+TESTING
+To test, I started compiling and running the program on the test-dirs once I
+had the first half, the creation of the Database, completed. This allowed me to
+root out any errors up to that point, which made the implementation of the
+second half, querying, much easier. To tes the final product, I ran it on the
+test-dirs and compared my output to that of the_gerp.
+
+
+
+Thanks! Have a good one.
+
+
+
+
+
+
+
+
+
+
+
